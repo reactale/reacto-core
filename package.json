@@ -1,0 +1,27 @@
+{
+  "name": "reacto",
+  "version": "1.0.0",
+  "description": "**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**",
+  "private": true,
+  "scripts": {
+    "build": "./node_modules/.bin/webpack",
+    "test": "jest",
+    "coverage": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://knexsol@bitbucket.org/knexsol/reacto.git"
+  },
+  "keywords": [],
+  "author": "Suman Barick",
+  "license": "All Rights Reserved",
+  "homepage": "https://bitbucket.org/knexsol/reacto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "babel-jest": "^25.1.0",
+    "jest": "^25.1.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}
