@@ -19,6 +19,7 @@ import {_findAndProcessReactos} from './modules/processor'
 import { _eatUnwantedNL } from './modules/util'
 import { addFn } from './modules/interpreters/fn'
 import { getLangs } from './modules/lang'
+import { getAllVars, setAllVars, resetVars } from './modules/interpreters/var'
 
 /*
 * Input: Text with reactos
@@ -41,7 +42,10 @@ function exportGlobalFns () {
     window.rto = {
         process,
         addFn,
-        getLangs
+        getLangs,
+        getAllVars,
+        setAllVars,
+        resetVars
     }
 }
 

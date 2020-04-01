@@ -22,12 +22,14 @@ let _privateVars = {}
 
 export const _setVar = (k, v) => _privateVars[k] = v
 
+export const setAllVars = kvPairs => _privateVars = {..._privateVars, ...kvPairs}
+
 // Fail silently, but ensure 0 is NOT FALSE by changing it to String
 export const _getVar = k => (typeof(_privateVars[k]) !== 'undefined') ?  _privateVars[k].toString() : ''
 
-export const _resetVars = () => _privateVars = {}
+export const resetVars = () => _privateVars = {}
 
-export const _getAll = () => ({..._privateVars})
+export const getAllVars = () => ({..._privateVars})
 
 export const _interpret_var = token => {
     // if a SET call
