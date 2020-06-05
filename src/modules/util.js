@@ -25,16 +25,8 @@ function _prepValForMaths(tok) {
 */
 function _eatUnwantedNL(txt) {
     //console.log("before="); console.log(txt);
-    //return txt.replace(/\\[ \r]*\n/g, '').trim();
-    // txt = txt.replace(/(\s+|)\\(\r\n|\r|\n)/g, ' ').trim();
+    // txt = txt.replace(/(\s+|)\\(\r\n|\r|\n)/g, ' ').trim();  // eat spaces also
     txt = txt.replace(/\\(\r\n|\r|\n)/g, '').trim();
-    
-    // txt = txt.replace(/(\s+|)\\(\r\n|\r|\n)/g, t => {
-    //     // if after trimming it is nothing, then it is just a blank newline
-    //     console.log("t = (", t.trim() , ")")
-    //     if(!t.trim()) return '' // return blank
-    //     return ' '              // return 1 space only
-    // })
 
     //sometimes due to excessive trimming at each phase, 
     // the last "\" can be left alone without a "\n" to have it removed
