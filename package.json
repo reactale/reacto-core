@@ -4,7 +4,7 @@
   "description": "**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**",
   "private": true,
   "scripts": {
-    "build": "./node_modules/.bin/webpack",
+    "build": "jest && webpack",
     "test": "jest",
     "coverage": "jest --coverage"
   },
