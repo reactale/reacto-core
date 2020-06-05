@@ -42,4 +42,21 @@ describe("TEST LANG MODULE", () => {
         expect(_getCurrentLang()).toBe('en')  // Default is English i.e. 'en
     })
 
+    test('getDef should return the correct language definition object', () => {
+        // test for English
+        expect(getDef('en').thu).toBe('Thursday')
+        expect(getDef('en').sep).toBe('September')
+
+        // test for Bengali
+        expect(getDef('beng').tue).toBe('মঙ্গলবার')
+        expect(getDef('beng').apr).toBe('এপ্রিল')
+    })
+
+    test('getCurrentLangDef should return the current language definition object', () => {
+        let langCode = 'hind'       // for Hindi
+        _setCurrentLang(langCode)
+        expect(getCurrentLangDef().sun).toBe('रविवार')
+        expect(getCurrentLangDef().dec).toBe('दिसंबर')
+    })
+
 })
