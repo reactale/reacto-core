@@ -1,5 +1,5 @@
 /*
-* /\(\(r\.(.|\n)*?\)\)/g
+* /\(\(r\.(.)*?\)\)/gs
 *
 * This regex matches anything that starts with "((r."
 * And ends with "))"
@@ -15,7 +15,7 @@
 import { _interpret } from './interpreters'
 
 function _findAndProcessReactos (rTxt) {
-    var nTxt = rTxt.replace(/\(\(r\.(.|\n)*?\)\)/g, function(rToken) {
+    var nTxt = rTxt.replace(/\(\(r\.(.)*?\)\)/gs, function(rToken) {
         var val = _interpret(rToken);
 
         // 0 and '0' are valid, so let them be
