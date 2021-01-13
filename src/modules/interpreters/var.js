@@ -46,9 +46,25 @@ export const _interpret_var = token => {
     }
 
     // Else a GET call
-    // Caution, if the value was previously set by reacto, then it may need to process by LangTranlate
+    // Caution, if the value was previously set by reacto, then it may need to process by LangTranslate
     else {
-        return _getVar(token.toString().trim());
+        let value = _getVar(token.toString().trim());
+
+        // Let's give 1 level of interpolation feature
+        // that is,
+        // if another r.var.var_name is embedded in this one,
+        // then replace it with the real value 
+        const R_VAR = 'r.var.'
+        value = value.split(' ').map(v => {
+            if(_startsWith(v, R_VAR)) {
+                let realValue = _getVar(v.substr(R_VAR.length))
+                if (typeof(realValue) !== 'undefined') v = realValue
+            }
+
+            return v
+        }).join(' ')
+
+        return value
     }
 }
 
