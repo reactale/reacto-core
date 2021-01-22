@@ -1,6 +1,6 @@
 /*
 * ((r.fn.fnName))
-* ((r.fn.fnName __ param1 __ param2 ))  // pass params separated with Double underscore
+* ((r.fn.fnName ,, param1 ,, param2 ))  // pass params separated with Double Comma
 * This function interprets Function reactos
 * And call the functions
 */
@@ -9,7 +9,7 @@
 // that can be excuted using ((r.fn.fnName)) 
 let fns = {}
 
-export const addFn = (fn, fnName) => fns[fnName] = fn
+export const addFn = (fnName, fn) => fns[fnName] = fn
 export const getFn = fnName => fns[fnName]
 export const getFnList = () => Object.keys(fns)
 
@@ -20,8 +20,8 @@ export const _interpret_fn = fnData => {
 
     // If there are params
     // Then seprate the Fn and The params
-    if (fnData.indexOf('__') >= 0) {
-        let parts = fnData.split('__');
+    if (fnData.indexOf(',,') >= 0) {
+        let parts = fnData.split(',,');
         fnName = parts[0].trim();
         params = parts.slice(1).map(v => v.trim());
     }
