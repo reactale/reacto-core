@@ -11,6 +11,7 @@ let fns = {}
 
 export const addFn = (fn, fnName) => fns[fnName] = fn
 export const getFn = fnName => fns[fnName]
+export const getFnList = () => Object.keys(fns)
 
 export const _interpret_fn = fnData => {
     let res = '';

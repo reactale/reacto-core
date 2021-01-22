@@ -17,7 +17,7 @@
 import { _preReplaceBlocks } from './modules/blocks'
 import {_findAndProcessReactos} from './modules/processor'
 import { _eatUnwantedNL } from './modules/util'
-import { addFn } from './modules/interpreters/fn'
+import { addFn, getFnList } from './modules/interpreters/fn'
 import { getLangs } from './modules/lang'
 import { getAllVars, setAllVars, resetVars } from './modules/interpreters/var'
 
@@ -42,6 +42,7 @@ function exportGlobalFns () {
     window.rto = {
         process,
         addFn,
+        getFnList,
         getLangs,
         getAllVars,
         setAllVars,
