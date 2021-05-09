@@ -213,6 +213,5 @@ export const setCurrentLocale = (localeCode) => {
         console.log('For your help, this are valid locales -');
         console.log(JSON.stringify(getLocales(), null, 4));
     }
-    console.log('currentLocale = ', currentLocale);
 };
 //# sourceMappingURL=locale.js.map
