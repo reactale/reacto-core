@@ -6,16 +6,18 @@
 * It can go multiline
 * It can contain single "(" and ")"
 * It can contain "( (", i.e. double ( with space in between
-*
+* 
 * This function receives entire rTxt
 * It will go thru all ((r.eacto)) one by one
 * and send for processing
 *
 */
-import { _interpret } from './interpreters/index';
-function _findAndProcessReactos(rTxt) {
-    var nTxt = rTxt.replace(/\(\(r\.(.)*?\)\)/gs, function (rToken) {
+import { _interpret } from './interpreters/index'
+
+function _findAndProcessReactos (rTxt: string) {
+    var nTxt = rTxt.replace(/\(\(r\.(.)*?\)\)/gs, function(rToken) {
         var val = _interpret(rToken);
+
         // 0 and '0' are valid, so let them be
         if (val === '0' || val === 0) {
             return val;
@@ -24,7 +26,8 @@ function _findAndProcessReactos(rTxt) {
             return val || '';
         }
     });
+
     return nTxt.trim();
 }
-export { _findAndProcessReactos };
-//# sourceMappingURL=processor.js.map
+
+export { _findAndProcessReactos }

@@ -4,6 +4,7 @@
   "description": "This is the core reacto engine",
   "private": true,
   "scripts": {
+    "watch": "webpack --watch",
     "build": "jest && webpack",
     "test": "jest --watch",
     "coverage": "jest --coverage"
@@ -21,7 +22,10 @@
     "@babel/preset-env": "^7.8.4",
     "babel-jest": "^25.1.0",
     "jest": "^25.1.0",
+    "ts-loader": "^9.1.2",
+    "typescript": "^4.2.4",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
-  }
+  },
+  "dependencies": {}
 }

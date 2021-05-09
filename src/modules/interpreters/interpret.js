@@ -88,9 +88,9 @@ function _interpret (aReacto, skipLTP) {
 
 
     // if !skipLTP, then it is for Display Purpose Only
-    if(!skipLTP) {
-        interpretedTxt = _langTranform(interpretedTxt);
-    }
+    // if(!skipLTP) {
+    //     interpretedTxt = _langTranform(interpretedTxt);
+    // }
 
     return interpretedTxt;
 }

@@ -25,10 +25,10 @@ import { getAllVars, setAllVars, resetVars } from './modules/interpreters/var';
 * This function will go thru all the RTOs and process them one by one
 * And replace them in the new string
 */
-function process(txt) {
+function process(txt: string) {
     return _startProcessing(txt);
 }
-function _startProcessing(rTxt) {
+function _startProcessing(rTxt: string) {
     let nTxt = _preReplaceBlocks(rTxt);
     nTxt = _findAndProcessReactos(nTxt);
     nTxt = _eatUnwantedNL(nTxt);
@@ -44,4 +44,3 @@ window.rto = {
     setAllVars,
     resetVars
 };
-//# sourceMappingURL=index.js.map
