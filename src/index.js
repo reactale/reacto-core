@@ -17,7 +17,6 @@ import { _preReplaceBlocks } from './modules/blocks';
 import { _findAndProcessReactos } from './modules/processor';
 import { _eatUnwantedNL } from './modules/util';
 import { addFn, getFnList } from './modules/interpreters/fn';
-import { getLangs } from './modules/lang';
 import { getAllVars, setAllVars, resetVars } from './modules/interpreters/var';
 /*
 * Input: Text with reactos
@@ -39,7 +38,6 @@ window.rto = {
     process,
     addFn,
     getFnList,
-    getLangs,
     getAllVars,
     setAllVars,
     resetVars

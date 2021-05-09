@@ -17,7 +17,6 @@ import {
 } from './index'
 import { _startsWith } from '../util'
 import { get_ifResult, set_ifResult } from './if'
-import _langTranform from '../lang/transform'
 
 function _interpret (aReacto, skipLTP) {
     skipLTP = skipLTP || false;
@@ -85,13 +84,7 @@ function _interpret (aReacto, skipLTP) {
     else if (_startsWith(tok, "_block.")) {
         interpretedTxt = _interpret_blk (tok.substr(7));     //remove "_block." and send for interpretation"
     }
-
-
-    // if !skipLTP, then it is for Display Purpose Only
-    // if(!skipLTP) {
-    //     interpretedTxt = _langTranform(interpretedTxt);
-    // }
-
+    
     return interpretedTxt;
 }
 
