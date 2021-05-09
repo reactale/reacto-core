@@ -202,9 +202,9 @@
 
  export const getLocales = () => ({...LOCALES})   // return a copy, no accidental modification
 
- export const getLangs = () => Object.values(LOCALES)
+//  export const getLangs = () => Object.values(LOCALES)
 
- export const getLocaleCodes = () => Object.keys(LOCALES)
+//  export const getLocaleCodes = () => Object.keys(LOCALES)
 
  export const getCurrentLocale = () => currentLocale
 

@@ -18,6 +18,7 @@ import { _findAndProcessReactos } from './modules/processor';
 import { _eatUnwantedNL } from './modules/util';
 import { addFn, getFnList } from './modules/interpreters/fn';
 import { getAllVars, setAllVars, resetVars } from './modules/interpreters/var';
+import { getLocales } from './modules/locale'
 /*
 * Input: Text with reactos
 * Output: Text will all the reactos resolved
@@ -40,5 +41,6 @@ window.rto = {
     getFnList,
     getAllVars,
     setAllVars,
-    resetVars
+    resetVars,
+    getLocales
 };
