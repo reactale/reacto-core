@@ -35,7 +35,7 @@ export const _interpret_dt = (rToken: string, skipLTP: boolean) => {
         // ((r.dt.hour24))
         case "hour24":
             // @ts-ignore
-            return new Intl.DateTimeFormat(locale, { hour: "numeric", hourCycle: "h24" }).format(dnow)
+            return new Intl.DateTimeFormat(locale, { hour: "numeric", hourCycle: "h23" }).format(dnow)
 
         // ((r.dt.min))
         case "min":

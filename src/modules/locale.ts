@@ -213,7 +213,7 @@
   * @param localeCode 
   */
  export const setCurrentLocale = (localeCode: string) => {
-    if(getLocaleCodes().includes(localeCode)) {
+    if(Object.keys(LOCALES).includes(localeCode)) {
         currentLocale = localeCode
     } 
     else {

@@ -197,15 +197,15 @@ const LOCALES = {
 };
 let currentLocale = 'en'; // always fallback to English
 export const getLocales = () => (Object.assign({}, LOCALES)); // return a copy, no accidental modification
-export const getLangs = () => Object.values(LOCALES);
-export const getLocaleCodes = () => Object.keys(LOCALES);
+//  export const getLangs = () => Object.values(LOCALES)
+//  export const getLocaleCodes = () => Object.keys(LOCALES)
 export const getCurrentLocale = () => currentLocale;
 /**
  * Set current locale if only a valid one, else keep 'en'
  * @param localeCode
  */
 export const setCurrentLocale = (localeCode) => {
-    if (getLocaleCodes().includes(localeCode)) {
+    if (Object.keys(LOCALES).includes(localeCode)) {
         currentLocale = localeCode;
     }
     else {

@@ -25,9 +25,9 @@ describe("TEST DATE-TIME (DT) MODULE", () => {
     
     test("Test ((r.dt.hour24))", () => {
         const rTxt = "((r.dt.hour24))"
-        const result = (new Date()).getHours().toString()
+        const result = (new Date()).getHours()
 
-        expect(_findAndProcessReactos(rTxt)).toBe(result)
+        expect(parseInt(_findAndProcessReactos(rTxt))).toBe(result)
     })
 
     test("Test ((r.dt.min))", () => {
