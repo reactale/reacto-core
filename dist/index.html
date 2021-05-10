@@ -15,11 +15,12 @@
         <div class="row">
             <div class="col-sm-12 col-md-6">
                 <label for="input-rtext" class="form-label">Reactive Text</label>
-                <textarea class="form-control" id="input-rtext" rows="5" placeholder="type text+reacto here ..."></textarea>
+                <textarea class="form-control monofont" id="input-rtext" rows="9" placeholder="type text+reacto here ..."></textarea>
             </div>
             <div class="col-sm-12 col-md-6">
                 <label for="output-text" class="form-label">Converted Text</label>
-                <textarea class="form-control" id="output-text" rows="5"></textarea>
+                <!-- <textarea class="form-control" id="output-text" rows="5"></textarea> -->
+                <pre id="output-text"></pre>
             </div>
         </div>
         <div class="d-flex flex-row-reverse mt-4">
@@ -50,6 +51,24 @@ Chinese: ((r.cfg.setLocale.zh))((r.dt.day))
 ((r.dt.min)) yields current minute, a number only, e.g. 18
 ((r.dt.sec)) yields current minute, a number only, e.g. 36
             </pre>
+
+            <pre class="mt-4">
+Adding number and reacto
+------------------------
+((r.cfg.setLocale.bn))\
+((r.var.n1 = 1))\
+((r.var.n2 = 2))\
+\
+((r.calc. r.var.n1 + r.var.n2))
+((r.calc. r.var.n1 + 8))
+((r.calc. 16 + r.var.n2))
+((r.calc. 20 + 30))
+
+Get Results, last to first:
+((r.var._1))
+((r.var._2))
+((r.var._3))
+            </pre>
         </div>
     </div>
     <script src="reacto.js"></script>
@@ -58,7 +77,8 @@ Chinese: ((r.cfg.setLocale.zh))((r.dt.day))
 
             document.getElementById('btn-convert').addEventListener('click', function(){
                 const rText = document.getElementById('input-rtext').value;
-                document.getElementById('output-text').value = rto.process(rText)
+                // document.getElementById('output-text').value = rto.process(rText)
+                document.getElementById('output-text').innerText = rto.process(rText)
             })
 
         })()

@@ -214,4 +214,11 @@ export const setCurrentLocale = (localeCode) => {
         console.log(JSON.stringify(getLocales(), null, 4));
     }
 };
+/**
+ * Convert a number to a local string representation,
+ * e.g. in Bengali 97 => "৯৭"
+ * @param num any number
+ * @returns
+ */
+export const numToLocale = (num) => new Intl.NumberFormat(currentLocale).format(num);
 //# sourceMappingURL=locale.js.map

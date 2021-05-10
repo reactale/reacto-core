@@ -10,7 +10,7 @@
     
  */
 
- const LOCALES = {
+const LOCALES = {
     "ab": "аҧсуа бызшәа, аҧсшәа",
     "aa": "Afaraf",
     "af": "Afrikaans",
@@ -195,30 +195,37 @@
     "yo": "Yorùbá",
     "za": "Saɯ cueŋƅ, Saw cuengh",
     "zu": "isiZulu"
- }
+}
 
- 
- let currentLocale = 'en' // always fallback to English
+let currentLocale = 'en' // always fallback to English
 
- export const getLocales = () => ({...LOCALES})   // return a copy, no accidental modification
+export const getLocales = () => ({ ...LOCALES })   // return a copy, no accidental modification
 
 //  export const getLangs = () => Object.values(LOCALES)
 
 //  export const getLocaleCodes = () => Object.keys(LOCALES)
 
- export const getCurrentLocale = () => currentLocale
+export const getCurrentLocale = () => currentLocale
 
- /**
-  * Set current locale if only a valid one, else keep 'en'
-  * @param localeCode 
-  */
- export const setCurrentLocale = (localeCode: string) => {
-    if(Object.keys(LOCALES).includes(localeCode)) {
+/**
+ * Set current locale if only a valid one, else keep 'en'
+ * @param localeCode 
+ */
+export const setCurrentLocale = (localeCode: string) => {
+    if (Object.keys(LOCALES).includes(localeCode)) {
         currentLocale = localeCode
-    } 
+    }
     else {
         console.log('The passed locale code ' + localeCode + ' is not a valid local codes.')
         console.log('For your help, this are valid locales -')
         console.log(JSON.stringify(getLocales(), null, 4))
     }
- }
+}
+
+/**
+ * Convert a number to a local string representation,
+ * e.g. in Bengali 97 => "৯৭"
+ * @param num any number
+ * @returns 
+ */
+export const numToLocale = (num: number | bigint):string => new Intl.NumberFormat(currentLocale).format(num)

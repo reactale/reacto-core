@@ -1,5 +1,6 @@
 import { _prepValForMaths } from '../util'
 import { setAllVars } from './var'
+import { numToLocale } from '../locale'
 /*
     * This function will do basic 4 maths opearion i.e. + - * /
     * ((r.calc. n1 OP n2))
@@ -59,7 +60,8 @@ function _interpret_calc(tok, skipLTP) {
             // do nothing
         }
         else {
-            result = '_r$$_' + result.toString().split('').join('_r$$_');
+            // result = '_r$$_' + result.toString().split('').join('_r$$_');
+            result = numToLocale(result)
         }
     }
 
