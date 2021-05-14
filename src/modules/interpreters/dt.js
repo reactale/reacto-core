@@ -23,7 +23,8 @@ export const _interpret_dt = (rToken, skipLTP) => {
         // 12 at night should be shown as 12, not 0
         case "hour":
             // newTxt = ((d.getHours() > 12 ? (d.getHours() - 12) : d.getHours()) || 12);
-            return new Intl.DateTimeFormat(locale, { hour: "numeric" }).format(dnow);
+            // @ts-ignore
+            return new Intl.DateTimeFormat(locale, { hour: "numeric", hourCycle: "h12" }).format(dnow);
         // ((r.dt.hour24))
         case "hour24":
             // @ts-ignore
