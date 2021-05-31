@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
     <title>Reacto Test</title>
 </head>
@@ -31,10 +31,12 @@
             <h2>Examples</h2>
             <pre>
 Today is =>
+((r.cfg.printOff)) # TURN OFF PRINTING
 English: ((r.cfg.setLocale.en))((r.dt.day))
 Bengali: ((r.cfg.setLocale.bn))((r.dt.day))
 Bhojpuri: ((r.cfg.setLocale.bh))((r.dt.day))
 Hindi: ((r.cfg.setLocale.hi))((r.dt.day))
+((r.cfg.printOn)) # TURN ON PRINTING
 Assammese: ((r.cfg.setLocale.as))((r.dt.day))
 Gujrati: ((r.cfg.setLocale.gu))((r.dt.day))
 Marathi: ((r.cfg.setLocale.mr))((r.dt.day))

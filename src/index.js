@@ -13,6 +13,7 @@
     It can contain single "(" and ")"
     It can contain "( (", i.e. double ( with space in between
 */
+const version = '1.0.9';
 import { _preReplaceBlocks } from './modules/blocks';
 import { _findAndProcessReactos } from './modules/processor';
 import { _eatUnwantedNL } from './modules/util';
@@ -36,6 +37,7 @@ function _startProcessing(rTxt) {
 }
 // @ts-ignore
 window.rto = {
+    getVersion: () => version,
     process,
     addFn,
     getFnList,
