@@ -30,6 +30,14 @@
         <div class="mt-5">
             <h2>Examples</h2>
             <pre>
+((r.0 Chaining Conditionals))
+((r.if. 5 > 3)) {{ Oh Yeah ... }}
+((r.if. 5 > 3)) ((r.if.and. 5 > 2)) {{ AND SUCCESSFUL 1 ... }}
+((r.if. 5 > 3)) ((r.if.and. 5 > 7)) {{ Should not be shown, 2nd cond false ... }}
+((r.if. 5 > 5)) ((r.if.and. 5 > 2)) {{ Should not be shown, 1st cond false ... }}
+((r.if. 5 > 5)) ((r.if.and. 1 > 2)) {{ Should not be shown, BOTH cond false ... }}
+            </pre>
+            <pre>
 Today is =>
 ((r.cfg.printOff)) # TURN OFF PRINTING
 English: ((r.cfg.setLocale.en))((r.dt.day))

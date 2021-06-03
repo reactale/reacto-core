@@ -76,9 +76,11 @@ describe("TEST DATE-TIME (DT) MODULE", () => {
         expect(_findAndProcessReactos(rTxt)).toBe(result)
     })
 
+    // test was failing for "गुरुवार" and "गुरूवार"
     test("Test ((r.dt.day)) In Hindi", () => {
         const rTxt = "((r.cfg.setLocale.hi))((r.dt.day))"
-        const DAYS = ['रविवार', 'सोमवार', 'मंगलवार', 'बुधवार', 'गुरूवार', 'शुक्रवार', 'शनिवार']
+        const DAYS = ['रविवार', 'सोमवार', 'मंगलवार', 'बुधवार', 'गुरुवार', 'शुक्रवार', 'शनिवार']
+        
         const result = DAYS[(new Date()).getDay()]
 
         expect(_findAndProcessReactos(rTxt)).toBe(result)

@@ -16,18 +16,27 @@ import { _interpret } from './interpreters/index';
 import { VAR_IS_PRINT_OFF } from './constants';
 import { _getVar } from './interpreters/var';
 function _findAndProcessReactos(rTxt) {
-    var nTxt = rTxt.replace(/\(\(r\.(.)*?\)\)/gs, function (rToken) {
-        var val = _interpret(rToken);
+    let nTxt = rTxt.replace(/\(\(r\.(.)*?\)\)/gs, function (rToken) {
+        let val = '';
+        // TRY CATCH, IF REACTO INTERPRETER FAILS
+        // FOR ANY OF THE REACTOS
+        try {
+            val = _interpret(rToken);
+        }
+        catch (err) {
+            console.log(err);
+        }
+        finally {
+            // Whatever it is, the final output must be a string
+            // Check undefined, because some reactos r.if. doesnot return anything
+            if (typeof (val) === 'undefined')
+                val = '';
+            val = val.toString();
+        }
         if (_getVar(VAR_IS_PRINT_OFF) === 'YES') {
-            return '';
+            val = '';
         }
-        // 0 and '0' are valid, so let them be
-        else if (val === '0' || val === 0) {
-            return val;
-        }
-        else {
-            return val || '';
-        }
+        return val;
     });
     return nTxt.trim();
 }

@@ -37,15 +37,15 @@ function _interpret (aReacto, skipLTP) {
         tok = tok.substr(2);
     }
 
-
+    // DEPRECATED
     // If prev if_reacto resulted in FALSE
     // No Need to process this reacto
     // Reset _ifResult and
     // Just return blank
-    if(!get_ifResult()) {
-        set_ifResult(true)
-        return '';
-    }
+    // if(!get_ifResult()) {
+    //     set_ifResult(true)
+    //     return '';
+    // }
     ///////////////////////////////////////
 
     // Now create the reducer staircase
@@ -83,6 +83,12 @@ function _interpret (aReacto, skipLTP) {
     // ((r._block.ID))
     else if (_startsWith(tok, "_block.")) {
         interpretedTxt = _interpret_blk (tok.substr(7));     //remove "_block." and send for interpretation"
+    }
+
+    // No Valid Class Found 
+    // i.e. ((r.SOME_INVALID_CLASS))
+    else {
+        interpretedTxt = ''
     }
     
     return interpretedTxt;

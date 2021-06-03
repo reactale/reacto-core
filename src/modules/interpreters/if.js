@@ -1,19 +1,18 @@
-import { _prepValForMaths } from '../util'
+import { _prepValForMaths, _startsWith } from '../util'
 /*
 * If an "if reacto" is processed, this var will store the bool result
 * Next,
 * If the next reacto is also "if reacto"
-* then result of prev_boolean AND next_boolean will be stored here
-* so on...
-* If any other reacto is found,
-* then, hide that reactos result if this var contains false
-* show that reactos result if this var contains true
 *
-* default is true, because we want to show by default show 
-* the results of reacto
+* If reacto determines the show/hide of the upcoming BLOCK
 */
-let _ifResult = true
+let _ifResult = false
+let _chainingCondition = 'OR'  // Defaults to OR // Because only 'OR' can neglect the null/false of before init
 
+const _restoreDefaults = () => {
+    _ifResult = false
+    _chainingCondition = 'OR'
+}
 
 export const get_ifResult = () => _ifResult
 export const set_ifResult = v => _ifResult = v
@@ -26,10 +25,18 @@ export const set_ifResult = v => _ifResult = v
      * 4 < 9
      * and all the ! counter parts
      * 
+     * For Chaining, the subsequent if reactos must contain .or / .and, e.g.
+     * AND reacto => ((r.if.and. 9 > 5))
+     * OR reacto => ((r.if.and. 7 > 3))
+     * 
      * @param {*} tok 
 */
 export const _interpret_if = tok => {
     let result = -1;
+
+    // first determine if it is AND or OR or Default (for first one)
+    // also clears the token of initial or. / and. (if any)
+    tok = _determineChaningCondition(tok)
 
     if (tok.indexOf('!=') >= 0) {
         let parts = tok.split('!=');
@@ -60,6 +67,37 @@ export const _interpret_if = tok => {
         return tok;         // i.e. could not interpret, as none of the if else qualified
     }
     else {
-        _ifResult = _ifResult && result;
+        _ifResult = _chainingCondition === 'AND' ? (_ifResult && result) : (_ifResult || result)
+        return ''
     }
+}
+
+/**
+ * Determing if it is a starting if. reacto
+ * or a chaning if.and. / if.or.
+ * @param {*} tok 
+ * @returns 
+ */
+function _determineChaningCondition (tok) {
+    // if it is an AND
+    if (_startsWith(tok, 'and.')) {
+        tok = tok.substr(4)
+        _chainingCondition = 'AND'
+    }
+
+    // else if it is an OR
+    else if (_startsWith(tok, 'or.')) {
+        tok = tok.substr(3)
+        _chainingCondition = 'OR'
+    }
+
+    // if it was an only if., i.e. no if.and. / if.or. at start
+    else {
+        // No chaining ?
+        // Begining of the Chain ?
+        // In any case, restore defaults
+        _restoreDefaults()
+    }
+
+    return tok
 }
