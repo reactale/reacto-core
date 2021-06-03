@@ -1,0 +1,12 @@
+.main-container {
+    margin-top: 30px;
+}
+.monofont {
+    font-family: 'Courier New', monospace;
+}
+#output-text {
+    border: 1px solid #ccc;
+    padding: 7px 15px;
+    border-radius: 4px;
+    min-height: 230px;
+}

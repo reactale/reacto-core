@@ -1,4 +1,4 @@
-import { _setVar, _interpret_var, resetVars } from '../src/modules/interpreters/var'
+import { _setVar, _interpret_var, resetVars } from '../dist/transpiled-ts-js/modules/interpreters/var'
 
 describe("TEST VAR MODULE", () => {
 

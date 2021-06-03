@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <title>Reacto Test</title>
+</head>
+<body>
+    
+    <div class="container main-container">
+        <h1>Reacto Tester</h1>
+        <div class="row">
+            <div class="col-sm-12 col-lg-6">
+                <label for="input-rtext" class="form-label">Reactive Text</label>
+                <textarea class="form-control monofont" id="input-rtext" rows="9" placeholder="type text+reacto here ..."></textarea>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+                <label for="output-text" class="form-label">Converted Text</label>
+                <!-- <textarea class="form-control" id="output-text" rows="5"></textarea> -->
+                <pre id="output-text"></pre>
+            </div>
+        </div>
+        <div class="d-flex flex-row-reverse mt-4">
+            <button id="btn-convert" type="button" class="btn btn-danger">Convert</button>
+        </div>
+
+        <div class="mt-5">
+            <h2>Examples</h2>
+            <pre>
+((r.0 Chaining Conditionals))
+
+((r.if. 5 > 3)) {{ Oh Yeah ... }}
+
+((r.if. 5 > 3)) ((r.if.and. 5 > 2)) {{ AND SUCCESSFUL 1 ... }}
+((r.if. 5 > 3)) ((r.if.and. 5 > 7)) {{ Should not be shown, 2nd cond false ... }}
+((r.if. 5 > 5)) ((r.if.and. 5 > 2)) {{ Should not be shown, 1st cond false ... }}
+((r.if. 5 > 5)) ((r.if.and. 1 > 2)) {{ Should not be shown, BOTH cond false ... }}
+
+((r.if. 5 > 3)) ((r.if.or. 5 > 2)) {{ Both True ... }}
+((r.if. 5 > 3)) ((r.if.or. 5 > 7)) {{ True ... }}
+((r.if. 5 > 5)) ((r.if.or. 5 > 2)) {{ True ... }}
+((r.if. 5 > 5)) ((r.if.or. 1 > 2)) {{ BOTH cond false ... }}
+            </pre>
+            <pre>
+Today is =>
+((r.cfg.printOff)) # TURN OFF PRINTING
+English: ((r.cfg.setLocale.en))((r.dt.day))
+Bengali: ((r.cfg.setLocale.bn))((r.dt.day))
+Bhojpuri: ((r.cfg.setLocale.bh))((r.dt.day))
+Hindi: ((r.cfg.setLocale.hi))((r.dt.day))
+((r.cfg.printOn)) # TURN ON PRINTING
+Assammese: ((r.cfg.setLocale.as))((r.dt.day))
+Gujrati: ((r.cfg.setLocale.gu))((r.dt.day))
+Marathi: ((r.cfg.setLocale.mr))((r.dt.day))
+Chinese: ((r.cfg.setLocale.zh))((r.dt.day))
+            </pre>
+
+            <pre class="mt-4">
+((r.dt.date)) yields today's date, a number only, e.g. 27
+((r.dt.day)) yields current day's name in the week, e.g. Sunday
+((r.dt.month)) yields current month, e.g. February
+((r.dt.year)) yields current year, e.g. 2018
+((r.dt.hour)) yields current hour in 12 hour format, e.g. 9
+((r.dt.hour24)) yields current hour in 24 hour format, e.g. 21
+((r.dt.min)) yields current minute, a number only, e.g. 18
+((r.dt.sec)) yields current minute, a number only, e.g. 36
+            </pre>
+
+            <pre class="mt-4">
+Adding number and reacto
+------------------------
+((r.cfg.setLocale.bn))\
+((r.var.n1 = 1))\
+((r.var.n2 = 2))\
+\
+((r.calc. r.var.n1 + r.var.n2))
+((r.calc. r.var.n1 + 8))
+((r.calc. 16 + r.var.n2))
+((r.calc. 20 + 30))
+
+Get Results, last to first:
+((r.var._1))
+((r.var._2))
+((r.var._3))
+            </pre>
+        </div>
+    </div>
+    <script src="reacto.js"></script>
+    <script>
+        (function(){
+
+            document.getElementById('btn-convert').addEventListener('click', function(){
+                const rText = document.getElementById('input-rtext').value;
+                // document.getElementById('output-text').value = rto.process(rText)
+                document.getElementById('output-text').innerText = rto.process(rText)
+            })
+
+        })()
+    </script>
+</body>
+</html>
