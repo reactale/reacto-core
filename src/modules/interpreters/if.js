@@ -1,4 +1,5 @@
 import { _prepValForMaths, _startsWith } from '../util'
+import { getPrevReacto, setPrevReacto } from '../services/system'
 /*
 * If an "if reacto" is processed, this var will store the bool result
 * Next,
@@ -6,16 +7,15 @@ import { _prepValForMaths, _startsWith } from '../util'
 *
 * If reacto determines the show/hide of the upcoming BLOCK
 */
-let _ifResult = false
-let _chainingCondition = 'OR'  // Defaults to OR // Because only 'OR' can neglect the null/false of before init
+// let _ifResult = true
+let _chainingCondition = ''
 
-const _restoreDefaults = () => {
-    _ifResult = false
-    _chainingCondition = 'OR'
-}
-
-export const get_ifResult = () => _ifResult
-export const set_ifResult = v => _ifResult = v
+// export const get_ifResult = () => _ifResult
+// export const set_ifResult = v => _ifResult = v
+// export const reset_ifResult = () => {
+//     _ifResult = true
+//     _chainingCondition = 'AND'
+// }
 
 /**
      * This function will interpret If statements and return rTrue or rFalse
@@ -67,7 +67,23 @@ export const _interpret_if = tok => {
         return tok;         // i.e. could not interpret, as none of the if else qualified
     }
     else {
-        _ifResult = _chainingCondition === 'AND' ? (_ifResult && result) : (_ifResult || result)
+        
+        // if current one is an AND / OR ?
+        if(_chainingCondition) {
+            // get the prev result to chain with
+            const prevReacto = getPrevReacto()
+
+            // Chain possible if prev reacto was also an 'if'
+            if(prevReacto.name === 'if') {
+                result = _chainingCondition === 'AND' ? (prevReacto.data && result) : (prevReacto.data || result)
+            }
+        }
+        
+        setPrevReacto({
+            name: 'if',
+            data: result
+        })
+
         return ''
     }
 }
@@ -95,8 +111,8 @@ function _determineChaningCondition (tok) {
     else {
         // No chaining ?
         // Begining of the Chain ?
-        // In any case, restore defaults
-        _restoreDefaults()
+        // In any case, reset to defaults
+        _chainingCondition = ''
     }
 
     return tok

@@ -6,9 +6,7 @@
  */
 import { _startsWith } from '../util'
 import { setCurrentLocale } from '../locale'
-import { _setVar } from './var'
-
-import { VAR_IS_PRINT_OFF } from '../constants'
+import { setPrintOff } from '../services/system'
 
 function _interpret_cfg (token) {
     // (r.cfg.setLocale.en) => Changes rto.currentLang
@@ -17,10 +15,10 @@ function _interpret_cfg (token) {
         setCurrentLocale(langCode);
     }
     else if (token === 'printOff') {
-        _setVar(VAR_IS_PRINT_OFF, 'YES')
+        setPrintOff(true)
     }
     else if (token === 'printOn') {
-        _setVar(VAR_IS_PRINT_OFF, 'NO')
+        setPrintOff(false)
     }
     return '';
 }

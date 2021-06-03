@@ -16,7 +16,7 @@ import {
     _interpret_var
 } from './index'
 import { _startsWith } from '../util'
-import { get_ifResult, set_ifResult } from './if'
+import { setPrevReacto } from '../services/system'
 
 function _interpret (aReacto, skipLTP) {
     skipLTP = skipLTP || false;
@@ -51,38 +51,43 @@ function _interpret (aReacto, skipLTP) {
     // Now create the reducer staircase
     if (_startsWith(tok, "dt.")) {
         interpretedTxt = _interpret_dt(tok.substr(3), skipLTP);     //remove "dt." and send for interpretation"
+        setPrevReacto({ name: 'dt' })
     }
 
     // if it is a Config Reacto i.e. it looks like (r.cfg.key.value)
     else if (_startsWith(tok, "cfg.")) {
         interpretedTxt = _interpret_cfg(tok.substr(4));     //remove "cfg." and send for interpretation"
+        setPrevReacto({ name: 'cfg' })
     }
 
     // if it is a Var Reacto i.e. it looks like (r.var.key1)
     else if (_startsWith(tok, "var.")) {
         interpretedTxt = _interpret_var(tok.substr(4));     //remove "var." and send for interpretation"
+        setPrevReacto({ name: 'var' })
     }
 
     // if it is a Calc Reacto i.e. it looks like ((r.calc. n1 OP n2))
     else if (_startsWith(tok, "calc.")) {
         interpretedTxt = _interpret_calc(tok.substr(5), skipLTP);     //remove "var." and send for interpretation"
+        setPrevReacto({ name: 'calc' })
     }
 
     // if it a Conditional IF statement, WOW
     else if (_startsWith(tok, "if.")) {
-        //ifReacto = true;
         interpretedTxt = _interpret_if (tok.substr(3));     //remove "if." and send for interpretation"
     }
 
     // if it is a Functional Reacto,
     else if (_startsWith(tok, "fn.")) {
         interpretedTxt = _interpret_fn (tok.substr(3));     //remove "fn." and send for interpretation"
+        setPrevReacto({ name: 'fn' })
     }
 
     // if it is an internal Block Reacto
     // ((r._block.ID))
     else if (_startsWith(tok, "_block.")) {
         interpretedTxt = _interpret_blk (tok.substr(7));     //remove "_block." and send for interpretation"
+        setPrevReacto({ name: '_block' })
     }
 
     // No Valid Class Found 

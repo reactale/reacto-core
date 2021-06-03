@@ -1,5 +1,5 @@
 import { _findAndProcessReactos } from './processor'
-
+import { getPrevReacto } from './services/system'
 /*
 * This variable will store all {{ ... }} blocks
 * with key being some id
@@ -34,9 +34,19 @@ function _preReplaceBlocks (rTxt: string) {
 * Gets corressponding block from 
 */
 function _interpret_blk (blockID: string) {
-    var block = _rBlocks[blockID];
-    block = block.substring(2, block.length - 2); //remove starting "{{" and ending "}}"
-    block = _findAndProcessReactos(block);
+    let prevReacto = getPrevReacto()
+    let block = ''
+
+    // Block will be executed IF
+    // Either prev reacto was not a condition
+    // OR
+    // IF it was a conditional, resulted in true
+    if(prevReacto.name !== 'if' || (prevReacto.name === 'if' && prevReacto.data === true)) {
+        block = _rBlocks[blockID];
+        block = block.substring(2, block.length - 2); //remove starting "{{" and ending "}}"
+        block = _findAndProcessReactos(block);
+    }
+    
     delete _rBlocks[blockID];   // free the memory
     return block;
 }

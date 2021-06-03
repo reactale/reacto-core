@@ -13,11 +13,11 @@
     <div class="container main-container">
         <h1>Reacto Tester</h1>
         <div class="row">
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-12 col-lg-6">
                 <label for="input-rtext" class="form-label">Reactive Text</label>
                 <textarea class="form-control monofont" id="input-rtext" rows="9" placeholder="type text+reacto here ..."></textarea>
             </div>
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-12 col-lg-6">
                 <label for="output-text" class="form-label">Converted Text</label>
                 <!-- <textarea class="form-control" id="output-text" rows="5"></textarea> -->
                 <pre id="output-text"></pre>
@@ -31,11 +31,18 @@
             <h2>Examples</h2>
             <pre>
 ((r.0 Chaining Conditionals))
+
 ((r.if. 5 > 3)) {{ Oh Yeah ... }}
+
 ((r.if. 5 > 3)) ((r.if.and. 5 > 2)) {{ AND SUCCESSFUL 1 ... }}
 ((r.if. 5 > 3)) ((r.if.and. 5 > 7)) {{ Should not be shown, 2nd cond false ... }}
 ((r.if. 5 > 5)) ((r.if.and. 5 > 2)) {{ Should not be shown, 1st cond false ... }}
 ((r.if. 5 > 5)) ((r.if.and. 1 > 2)) {{ Should not be shown, BOTH cond false ... }}
+
+((r.if. 5 > 3)) ((r.if.or. 5 > 2)) {{ Both True ... }}
+((r.if. 5 > 3)) ((r.if.or. 5 > 7)) {{ True ... }}
+((r.if. 5 > 5)) ((r.if.or. 5 > 2)) {{ True ... }}
+((r.if. 5 > 5)) ((r.if.or. 1 > 2)) {{ BOTH cond false ... }}
             </pre>
             <pre>
 Today is =>

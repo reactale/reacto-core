@@ -13,8 +13,7 @@
 *
 */
 import { _interpret } from './interpreters/index';
-import { VAR_IS_PRINT_OFF } from './constants';
-import { _getVar } from './interpreters/var';
+import { isPrintOff } from './services/system';
 function _findAndProcessReactos(rTxt) {
     let nTxt = rTxt.replace(/\(\(r\.(.)*?\)\)/gs, function (rToken) {
         let val = '';
@@ -33,7 +32,7 @@ function _findAndProcessReactos(rTxt) {
                 val = '';
             val = val.toString();
         }
-        if (_getVar(VAR_IS_PRINT_OFF) === 'YES') {
+        if (isPrintOff()) {
             val = '';
         }
         return val;
