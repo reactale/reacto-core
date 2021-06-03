@@ -1,4 +1,4 @@
-import { _interpret_blk } from '../blocks'
+import { _interpret_blk } from './blocks'
 import _interpret_calc from './calc'
 import _interpret_cfg from './cfg'
 import {_interpret_dt} from './dt'

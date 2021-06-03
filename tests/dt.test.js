@@ -1,4 +1,4 @@
-import { _findAndProcessReactos } from '../src/modules/processor'
+import { _findAndProcessReactos } from '../dist/transpiled-ts-js/modules/processor'
 
 describe("TEST DATE-TIME (DT) MODULE", () => {
     test("Test ((r.dt.year))", () => {

@@ -6,12 +6,12 @@
  */
 
  // @ts-ignore
-import { days, months } from '../constants'
-import { getCurrentLocale } from '../locale'
+import { days, months } from '../services/constants'
+import { getCurrentLocale } from '../services/locale'
 
 
 export const _interpret_dt = (rToken: string, skipLTP: boolean) => {
-    let newTxt;
+    let newTxt = '';
     let d = new Date();
     const dnow = Date.now()
     const locale = skipLTP ? 'en' : getCurrentLocale()

@@ -2,7 +2,7 @@ import {
     _prepValForMaths,
     _eatUnwantedNL,
     _startsWith
-} from '../src/modules/util'
+} from '../dist/transpiled-ts-js/modules/services/util'
 
 describe("TESTING UTIL.JS", () => {
 

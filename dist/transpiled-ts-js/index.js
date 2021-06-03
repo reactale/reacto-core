@@ -13,24 +13,23 @@
     It can contain single "(" and ")"
     It can contain "( (", i.e. double ( with space in between
 */
-const version='1.1.0'
-
+const version = '1.1.0';
 import { _preReplaceBlocks } from './modules/interpreters/blocks';
 import { _findAndProcessReactos } from './modules/processor';
 import { _eatUnwantedNL } from './modules/services/util';
 import { addFn, getFnList } from './modules/interpreters/fn';
 import { getAllVars, setAllVars, resetVars } from './modules/interpreters/var';
-import { getLocales, numToLocale } from './modules/services/locale'
+import { getLocales, numToLocale } from './modules/services/locale';
 /*
 * Input: Text with reactos
 * Output: Text will all the reactos resolved
 * This function will go thru all the RTOs and process them one by one
 * And replace them in the new string
 */
-function process(txt: string) {
+function process(txt) {
     return _startProcessing(txt);
 }
-function _startProcessing(rTxt: string) {
+function _startProcessing(rTxt) {
     let nTxt = _preReplaceBlocks(rTxt);
     nTxt = _findAndProcessReactos(nTxt);
     nTxt = _eatUnwantedNL(nTxt);
@@ -48,3 +47,4 @@ window.rto = {
     getLocales,
     numToLocale
 };
+//# sourceMappingURL=index.js.map
