@@ -26,9 +26,9 @@ import { getLocales, numToLocale } from './modules/services/locale';
 * This function will go thru all the RTOs and process them one by one
 * And replace them in the new string
 */
-function process(txt) {
+export const process = (txt) => {
     return _startProcessing(txt);
-}
+};
 function _startProcessing(rTxt) {
     let nTxt = _preReplaceBlocks(rTxt);
     nTxt = _findAndProcessReactos(nTxt);

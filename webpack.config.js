@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   entry: './dist/transpiled-ts-js/index.js',
   devServer: {
-    contentBase: './compiled-js/',
+    contentBase: './dist',
   },
   output: {
     filename: 'reacto.js',
