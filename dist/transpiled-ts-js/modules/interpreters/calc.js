@@ -10,7 +10,7 @@ import { numToLocale } from '../services/locale';
     * n1 OP n2
 */
 let allCalcResults = []; // This array will keep on storing all Calc results
-function _interpret_calc(tok, skipLTP) {
+function _interpret_calc(tok, skipTranslation) {
     let result;
     if (tok.indexOf('+') >= 0) {
         let parts = tok.split('+');
@@ -49,7 +49,7 @@ function _interpret_calc(tok, skipLTP) {
         allCalcResults.push(result);
         _createSpecialCalcVar();
     }
-    if (!skipLTP) {
+    if (!skipTranslation) {
         if (typeof (result) === 'undefined') {
             // do nothing
         }

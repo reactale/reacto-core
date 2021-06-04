@@ -1,15 +1,15 @@
 /**
  * All Reactos, that start with "dt." should come here for interpretation
  * These are DateTime Reactos,
- * For skipLTP = Skip Language Translation Process
+ * For skipTranslation = Skip Language Translation Process
  * @param {String} rToken
  */
 import { getCurrentLocale } from '../services/locale';
-export const _interpret_dt = (rToken, skipLTP) => {
+export const _interpret_dt = (rToken, skipTranslation) => {
     let newTxt = '';
     let d = new Date();
     const dnow = Date.now();
-    const locale = skipLTP ? 'en' : getCurrentLocale();
+    const locale = skipTranslation ? 'en' : getCurrentLocale();
     switch (rToken) {
         // Reacto = ((r.dt.year))
         case "year":

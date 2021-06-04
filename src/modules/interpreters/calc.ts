@@ -11,7 +11,7 @@ import { numToLocale } from '../services/locale'
 */
 let allCalcResults: number[] = [] // This array will keep on storing all Calc results
 
-function _interpret_calc(tok: string, skipLTP: boolean): string {
+function _interpret_calc(tok: string, skipTranslation: boolean): string {
     let result;
 
     if (tok.indexOf('+') >= 0) {
@@ -58,7 +58,7 @@ function _interpret_calc(tok: string, skipLTP: boolean): string {
     }
     
 
-    if (!skipLTP) {
+    if (!skipTranslation) {
         if (typeof(result) === 'undefined') {
             // do nothing
         }

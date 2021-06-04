@@ -2,14 +2,14 @@
  * This function will receive, presumably, a reacto
  * and it should look like either r.class.property OR ((r.class.property))
  * For Language Translation Prepending with "r$$_" is necessary, LTP in short
- * skipLTP is False by default
- * forward skipLTP to the Reacto Interpreters which returns a value (a number or a string)
+ * skipTranslation is False by default
+ * forward skipTranslation to the Reacto Interpreters which returns a value (a number or a string)
  */
 import { _interpret_blk, _interpret_calc, _interpret_cfg, _interpret_dt, _interpret_fn, _interpret_if, _interpret_var } from './index';
 import { _startsWith } from '../services/util';
 import { setPrevReacto } from '../services/system';
-function _interpret(aReacto, skipLTP = false) {
-    skipLTP = skipLTP || false;
+function _interpret(aReacto, skipTranslation = false) {
+    skipTranslation = skipTranslation || false;
     //let ifReacto = false;
     let interpretedTxt = "";
     let tok = aReacto.trim();
@@ -37,7 +37,7 @@ function _interpret(aReacto, skipLTP = false) {
     ///////////////////////////////////////
     // Now create the reducer staircase
     if (_startsWith(tok, "dt.")) {
-        interpretedTxt = _interpret_dt(tok.substr(3), skipLTP); //remove "dt." and send for interpretation"
+        interpretedTxt = _interpret_dt(tok.substr(3), skipTranslation); //remove "dt." and send for interpretation"
         setPrevReacto({ name: 'dt' });
     }
     // if it is a Config Reacto i.e. it looks like (r.cfg.key.value)
@@ -52,7 +52,7 @@ function _interpret(aReacto, skipLTP = false) {
     }
     // if it is a Calc Reacto i.e. it looks like ((r.calc. n1 OP n2))
     else if (_startsWith(tok, "calc.")) {
-        interpretedTxt = _interpret_calc(tok.substr(5), skipLTP); //remove "var." and send for interpretation"
+        interpretedTxt = _interpret_calc(tok.substr(5), skipTranslation); //remove "var." and send for interpretation"
         setPrevReacto({ name: 'calc' });
     }
     // if it a Conditional IF statement, WOW

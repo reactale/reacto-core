@@ -6,16 +6,16 @@ import {
 
 describe("TESTING UTIL.JS", () => {
 
-    test('_eatUnwantedNL: replaces newlines with single space', () => {
+    test('_eatUnwantedNL: replaces newlines with zero space', () => {
         // Beware of unwanted IDE introduced WhiteSpaces
         // also add two \\ otherwise it will by default escape the newline
         // such escaping will not work when readin from file as text
-        let multilineString = `Superman\\
-Batman\\
-Iron Man`
+        let multilineString = `Superman \\
+Batman \\
+Iron-Man`
 
         let result = _eatUnwantedNL(multilineString)
-        let expectedResult = "SupermanBatmanIron Man"
+        let expectedResult = "Superman Batman Iron-Man"
 
         expect(result).toBe(expectedResult)
     })
@@ -23,16 +23,16 @@ Iron Man`
     test('_eatUnwantedNL: removes consecutive newlines', () => {
         // Beware of unwanted IDE introduced WhiteSpaces
         let multilineString = `\\
-Superman\\
+Superman \\
 \\
 \\
-Batman\\
+Batman \\
 \\
-Iron Man\\
+Iron-Man\\
 \\`
 
         let result = _eatUnwantedNL(multilineString)
-        let expectedResult = "SupermanBatmanIron Man"
+        let expectedResult = "Superman Batman Iron-Man"
 
         expect(result).toBe(expectedResult)
     })
