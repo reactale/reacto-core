@@ -143,6 +143,24 @@ describe("TEST CONDITIONAL (IF) MODULE", () => {
         expect(process(rTxt)).toBe('')
     })
 
+    test("The reacto immediately after if:false will not be executed ", () => {
+        // when true
+        let rTxt = "((r.if. 4 > 3 ))((r.calc. 4 + 5 ))"
+        expect(process(rTxt)).toBe('9')
 
+        // when false
+        rTxt = "((r.if. 4 > 31 ))((r.calc. 4 + 5 ))"
+        expect(process(rTxt)).toBe('')
+    })
+
+    test("Only 1 reacto would be skipped after if:false", () => {
+        // when true
+        let rTxt = "((r.if. 4 > 3 ))((r.calc. 4 + 5 ))((r.calc. 4 + 5 ))"
+        expect(process(rTxt)).toBe('99')
+
+        // when false
+        rTxt = "((r.if. 4 > 31 ))((r.calc. 4 + 5 ))((r.calc. 4 + 5 ))"
+        expect(process(rTxt)).toBe('9')
+    })
 
 })

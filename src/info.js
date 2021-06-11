@@ -5,5 +5,5 @@
  * TO properly name the bundled reacto script
  */
 module.exports = {
-    VERSION: '1.1.2'
+    VERSION: '1.1.3'
 }
