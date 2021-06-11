@@ -52,7 +52,7 @@ function _interpret (aReacto: string, skipTranslation: boolean = false): string 
         // save a blank
         // because this reacto will be skipped
         if(shouldReturn) {
-            setPrevReacto({ name: '_skipped' })
+            setPrevReacto({ name: '_skipped'+thisReactoType })
         }
 
         return shouldReturn

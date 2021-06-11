@@ -1,5 +1,5 @@
 const path = require('path');
-const { VERSION } = require('./src/info')
+const { VERSION } = require('./dist/transpiled-ts-js/info')
 module.exports = {
   entry: './dist/transpiled-ts-js/index.js',
   // devtool: "inline-source-map",

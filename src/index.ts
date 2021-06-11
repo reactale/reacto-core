@@ -13,7 +13,7 @@
     It can contain single "(" and ")"
     It can contain "( (", i.e. double ( with space in between
 */
-const { VERSION } = require('./info')    //'1.1.1'
+const { VERSION } = require('./info')
 
 import { _preReplaceBlocks } from './modules/interpreters/blocks';
 import { _findAndProcessReactos } from './modules/processor';

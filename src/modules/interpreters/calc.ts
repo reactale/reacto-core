@@ -14,7 +14,8 @@ let allCalcResults: number[] = [] // This array will keep on storing all Calc re
 function _interpret_calc(tok: string, skipTranslation: boolean): string {
     let result;
 
-    if (tok.indexOf('+') >= 0) {
+    if (!isNaN(Number(tok))) result = Number(tok)
+    else if (tok.indexOf('+') >= 0) {
         let parts = tok.split('+');
         const op1 = _prepValForMaths(parts[0]);
         const op2 = _prepValForMaths(parts[1]);
@@ -50,6 +51,7 @@ function _interpret_calc(tok: string, skipTranslation: boolean): string {
             result = op1 / op2
         }
     }
+
 
     // Store it results array
     if(typeof(result) !== 'undefined') {

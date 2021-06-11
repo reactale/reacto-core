@@ -38,7 +38,7 @@ function _interpret(aReacto, skipTranslation = false) {
         // save a blank
         // because this reacto will be skipped
         if (shouldReturn) {
-            setPrevReacto({ name: '_skipped' });
+            setPrevReacto({ name: '_skipped' + thisReactoType });
         }
         return shouldReturn;
     };

@@ -12,7 +12,9 @@ import { numToLocale } from '../services/locale';
 let allCalcResults = []; // This array will keep on storing all Calc results
 function _interpret_calc(tok, skipTranslation) {
     let result;
-    if (tok.indexOf('+') >= 0) {
+    if (!isNaN(Number(tok)))
+        result = Number(tok);
+    else if (tok.indexOf('+') >= 0) {
         let parts = tok.split('+');
         const op1 = _prepValForMaths(parts[0]);
         const op2 = _prepValForMaths(parts[1]);

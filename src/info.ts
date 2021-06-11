@@ -4,6 +4,8 @@
  * Because apart from index.ts, this file is also read by webpack.config.js
  * TO properly name the bundled reacto script
  */
-module.exports = {
-    VERSION: '1.1.3'
+const INFO = {
+    VERSION: '1.1.5'
 }
+
+module.exports = INFO
