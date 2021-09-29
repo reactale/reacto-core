@@ -9,11 +9,17 @@
     "build": "tsc && jest && webpack",
     "test": "jest",
     "test-watch": "jest --watch",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "make-badges": "jest --coverage && istanbul-badges-readme"
   },
   "repository": {
     "type": "git",
     "url": "git+https://knexsol@bitbucket.org/knexsol/reacto.git"
+  },
+  "jest": {
+    "coverageReporters": [
+      "json-summary"
+    ]
   },
   "keywords": [],
   "author": "Suman Barick",
@@ -24,6 +30,7 @@
     "@babel/preset-env": "^7.14.4",
     "@webpack-cli/serve": "^1.4.0",
     "babel-jest": "^25.5.1",
+    "istanbul-badges-readme": "^1.4.0",
     "jest": "^25.5.4",
     "ts-loader": "^9.1.2",
     "typescript": "^4.2.4",
