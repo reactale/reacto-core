@@ -19,8 +19,9 @@ describe("TEST DATE-TIME (DT) MODULE", () => {
     test("Test ((r.dt.hour))", () => {
         const rTxt = "((r.dt.hour))"
         const d = new Date()
-        const result = ( d.getHours() > 12 ? `${(d.getHours() - 12)} PM` : `${(d.getHours() || 12)} AM` );
-
+        let result = ( d.getHours() > 12 ? `${(d.getHours() - 12)} PM` : `${(d.getHours() || 12)} AM` );
+        result = d.getHours() === 0 ? '12 AM' : result
+        result = d.getHours() === 12 ? '12 PM' : result
         expect(process(rTxt)).toBe(result)
     })
     

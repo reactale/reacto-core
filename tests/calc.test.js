@@ -2,6 +2,11 @@ import { process } from '../dist/transpiled-ts-js'
 
 describe("TEST CALC (CALC) MODULE", () => {
 
+    test("A number is a number", () => {
+        const rTxt = "((r.calc. 9 ))"
+        expect(process(rTxt)).toBe('9')
+    })
+
     test("Addition of 2 numbers", () => {
         const rTxt = "((r.calc. 4 + 5))"
         expect(process(rTxt)).toBe('9')

@@ -41,7 +41,8 @@ function _findAndProcessReactos (rTxt: string) {
         return val
     });
 
-    return nTxt.trim();
+    // return nTxt.trim();  // Don't trim the overall text i.e. not reacto
+    return nTxt;
 }
 
 export { _findAndProcessReactos }

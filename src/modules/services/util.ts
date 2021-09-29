@@ -30,7 +30,8 @@ function _prepValForMaths(tok: string): number {
 function _eatUnwantedNL(txt: string) {
     //console.log("before="); console.log(txt);
     // txt = txt.replace(/(\s+|)\\(\r\n|\r|\n)/g, ' ').trim();  // eat spaces also
-    txt = txt.replace(/\\(\r\n|\r|\n)/g, '').trim();
+    // txt = txt.replace(/\\(\r\n|\r|\n)/g, '').trim(); // Don't Trim
+    txt = txt.replace(/\\(\r\n|\r|\n)/g, '');
 
     //sometimes due to excessive trimming at each phase, 
     // the last "\" can be left alone without a "\n" to have it removed

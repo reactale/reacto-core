@@ -13,7 +13,7 @@
     It can contain single "(" and ")"
     It can contain "( (", i.e. double ( with space in between
 */
-const version = '1.1.0';
+const { VERSION } = require('./info');
 import { _preReplaceBlocks } from './modules/interpreters/blocks';
 import { _findAndProcessReactos } from './modules/processor';
 import { _eatUnwantedNL } from './modules/services/util';
@@ -37,7 +37,7 @@ function _startProcessing(rTxt) {
 }
 // @ts-ignore
 window.rto = {
-    getVersion: () => version,
+    getVersion: () => VERSION,
     process,
     addFn,
     getFnList,

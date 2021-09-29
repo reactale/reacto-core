@@ -11,10 +11,11 @@ import { numToLocale } from '../services/locale'
 */
 let allCalcResults: number[] = [] // This array will keep on storing all Calc results
 
-function _interpret_calc(tok: string, skipLTP: boolean): string {
+function _interpret_calc(tok: string, skipTranslation: boolean): string {
     let result;
 
-    if (tok.indexOf('+') >= 0) {
+    if (!isNaN(Number(tok))) result = Number(tok)
+    else if (tok.indexOf('+') >= 0) {
         let parts = tok.split('+');
         const op1 = _prepValForMaths(parts[0]);
         const op2 = _prepValForMaths(parts[1]);
@@ -51,6 +52,7 @@ function _interpret_calc(tok: string, skipLTP: boolean): string {
         }
     }
 
+
     // Store it results array
     if(typeof(result) !== 'undefined') {
         allCalcResults.push(result)
@@ -58,7 +60,7 @@ function _interpret_calc(tok: string, skipLTP: boolean): string {
     }
     
 
-    if (!skipLTP) {
+    if (!skipTranslation) {
         if (typeof(result) === 'undefined') {
             // do nothing
         }
