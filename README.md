@@ -1,3 +1,4 @@
+![Fexplo-logo](https://github.com/reactale/reacto-core/blob/master/extras/arts/reacto-logo/reacto-logo-full-60h-transparent-bg.png)
 # ((r)) reacto-core
 This repository contains the development of **Reacto** (*termed coined by Suman Barick as a short for Reactive Token*). Reactos are small tokens that can be placed anywhere in plain text to make the text dynamic / reactive. Reacto as built as a helper project for [Reactale](https://reactale.com)
 
