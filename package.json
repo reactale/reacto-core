@@ -6,7 +6,8 @@
   "scripts": {
     "watch": "webpack --watch",
     "build": "tsc && jest && webpack",
-    "test": "jest --watch",
+    "test": "jest",
+    "test-watch": "jest --watch",
     "coverage": "jest --coverage"
   },
   "repository": {
