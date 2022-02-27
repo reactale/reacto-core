@@ -5,7 +5,7 @@
  * TO properly name the bundled reacto script
  */
 const INFO = {
-    VERSION: '1.1.5'
+    VERSION: '1.1.13'
 }
 
 module.exports = INFO

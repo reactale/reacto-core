@@ -1,4 +1,5 @@
-import { process } from '../dist/transpiled-ts-js'
+import rto from '../dist/transpiled-ts-js'
+const process = rto.process
 
 describe("TEST CONFIG (CFG) MODULE", () => {
 
