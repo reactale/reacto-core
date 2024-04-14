@@ -26,7 +26,7 @@ import { getLocales, numToLocale } from './modules/services/locale';
 * This function will go thru all the RTOs and process them one by one
 * And replace them in the new string
 */
-export const process = (txt) => {
+const process = (txt) => {
     return _startProcessing(txt);
 };
 function _startProcessing(rTxt) {
@@ -35,8 +35,7 @@ function _startProcessing(rTxt) {
     nTxt = _eatUnwantedNL(nTxt);
     return nTxt;
 }
-// @ts-ignore
-window.rto = {
+const rto = {
     getVersion: () => VERSION,
     process,
     addFn,
@@ -47,4 +46,9 @@ window.rto = {
     getLocales,
     numToLocale
 };
+if (typeof (window) !== 'undefined') {
+    // @ts-ignore
+    window["rto"] = rto;
+}
+export default rto;
 //# sourceMappingURL=index.js.map
