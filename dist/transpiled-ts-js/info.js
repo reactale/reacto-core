@@ -6,7 +6,7 @@
  * TO properly name the bundled reacto script
  */
 const INFO = {
-    VERSION: '1.1.13'
+    VERSION: '1.2.1'
 };
 module.exports = INFO;
 //# sourceMappingURL=info.js.map
